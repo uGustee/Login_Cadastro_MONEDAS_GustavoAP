@@ -1,64 +1,380 @@
-body {
-  background-color: #0f172a;
-  color: #f1f5f9;
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-}
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #0d1a2a; /* Dark background similar to the image */
+            color: #fff;
+            overflow: hidden; /* To handle the background image/video better */
+        }
 
-.container {
-  background-color: #1e293b;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  text-align: center;
-  width: 300px;
-}
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: linear-gradient(to right, #1a2a3a, #0a1520); /* Gradient for the header */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-h1 {
-  margin-bottom: 24px;
-  font-size: 24px;
-}
+        .header-left a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
 
-form input {
-  display: block;
-  width: 100%;
-  margin-bottom: 16px;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background-color: #334155;
-  color: #f1f5f9;
-}
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
 
-form input::placeholder {
-  color: #94a3b8;
-}
+        .header-right a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+        }
 
-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #3b82f6;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
-}
+        .header-right .search-icon {
+            margin-right: 5px;
+        }
 
-button:hover {
-  background-color: #2563eb;
-}
+        .header-right .coin-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f7d75a; /* Yellowish color for the coin */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: #333; /* Darker color for the coin text/design */
+            margin-left: 20px;
+            /* You'd typically use an actual image here */
+            font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif; /* For a simple face */
+        }
 
-a {
-  color: #60a5fa;
-  text-decoration: none;
-}
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 80px;
+            position: relative;
+            height: calc(100vh - 70px); /* Adjust based on header height */
+            background: linear-gradient(to right, #0a1f2b, #001018); /* Main content background gradient */
+        }
 
-a:hover {
-  text-decoration: underline;
-}
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3; /* Adjust transparency to let text show */
+            z-index: 0;
+        }
+
+        .left-section {
+            flex: 1;
+            padding-right: 50px;
+            z-index: 1; /* Ensure text is above background image */
+        }
+
+        .left-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        .left-section p {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .left-section .app-preview {
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .left-section .app-preview img {
+            width: 180px; /* Adjust size of phone image */
+            margin-right: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .left-section .app-preview span {
+            font-size: 1.1em;
+            color: #ddd;
+        }
+
+        .right-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 20px;
+            width: 380px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            z-index: 1; /* Ensure form is above background image */
+        }
+
+        .right-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group input {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            background: transparent;
+            color: #fff;
+            font-size: 1.1em;
+            outline: none;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .input-group input:focus {
+            border-bottom-color: #79c8f0; /* Highlight on focus */
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px 0;
+            background-color: #f7d75a; /* Yellow button */
+            color: #333;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #e6c549;
+        }
+
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          background: linear-gradient(to right, #e0f2f7, #c1e4f0); /* Light blue gradient background */
+          color: #333;
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+          overflow: hidden; /* To keep elements within bounds */
+      }
+
+      .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 40px;
+          background: linear-gradient(to right, #d4edff, #a8dcfc); /* Slightly darker blue gradient for header */
+          border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-left a {
+          color: #333;
+          text-decoration: none;
+          margin-right: 30px;
+          font-weight: bold;
+          font-size: 1.1em;
+          transition: color 0.3s ease;
+      }
+
+      .header-left a:hover {
+          color: #007bff;
+      }
+
+      .header-right {
+          display: flex;
+          align-items: center;
+      }
+
+      .header-right a {
+          color: #333;
+          text-decoration: none;
+          margin-left: 30px;
+          font-weight: bold;
+      }
+
+      .header-right .search-icon {
+          margin-right: 5px;
+      }
+
+      .header-right .coin-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: #f7d75a; /* Yellowish color for the coin */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5em;
+          color: #333;
+          margin-left: 20px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+      }
+
+      .main-content {
+          display: flex;
+          flex-grow: 1;
+          justify-content: center;
+          align-items: center;
+          padding: 50px 80px;
+          position: relative;
+          z-index: 1;
+      }
+
+      .left-section {
+          flex: 1;
+          padding-right: 80px;
+          text-align: center;
+          position: relative; /* For positioning the card machine */
+      }
+
+      .left-section h2 {
+          font-size: 2.8em;
+          margin-bottom: 30px;
+          color: #004d66; /* Dark blue for heading */
+          line-height: 1.2;
+          text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      }
+
+      .card-machine-container {
+          position: relative;
+          width: 400px; /* Adjust size as needed */
+          height: 300px;
+          margin: 0 auto; /* Center the container */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .card-machine-image {
+          width: 100%; /* Adjust to fit container */
+          height: auto;
+          object-fit: contain;
+          transform: rotate(-15deg); /* Slight rotation */
+          filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.2));
+      }
+
+      /* Styling for the card, if separate */
+      .card-image {
+          position: absolute;
+          width: 50%; /* Adjust size relative to machine */
+          height: auto;
+          object-fit: contain;
+          top: 20%; /* Adjust position over the machine */
+          left: 55%;
+          transform: rotate(10deg);
+          filter: drop-shadow(3px 3px 10px rgba(0, 0, 0, 0.15));
+      }
+
+
+      .right-section {
+          background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3)); /* White translucent gradient */
+          padding: 40px 30px;
+          border-radius: 20px;
+          width: 450px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(10px); /* Frosted glass effect */
+          border: 1px solid rgba(255, 255, 255, 0.7);
+      }
+
+      .input-group {
+          margin-bottom: 25px;
+      }
+
+      .input-group label {
+          display: block;
+          margin-bottom: 8px;
+          font-size: 0.9em;
+          color: #555;
+          font-weight: bold;
+      }
+
+      .input-group input[type="text"],
+      .input-group input[type="email"],
+      .input-group input[type="tel"],
+      .input-group input[type="password"] {
+          width: calc(100% - 20px);
+          padding: 12px 10px;
+          border: none;
+          border-bottom: 2px solid #a8dcfc; /* Light blue bottom border */
+          background: rgba(255, 255, 255, 0.7);
+          color: #333;
+          font-size: 1.1em;
+          outline: none;
+          border-radius: 5px 5px 0 0; /* Rounded top corners, sharp bottom */
+          box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+          transition: border-bottom-color 0.3s ease, background-color 0.3s ease;
+      }
+
+      .input-group input:focus {
+          border-bottom-color: #007bff; /* Blue on focus */
+          background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      .input-group input::placeholder {
+          color: #888;
+      }
+
+      .checkbox-group {
+          display: flex;
+          align-items: center;
+          margin-bottom: 30px;
+          font-size: 0.95em;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+          margin-right: 10px;
+          transform: scale(1.2); /* Make checkbox slightly larger */
+      }
+
+      .checkbox-group label {
+          color: #555;
+      }
+
+      .checkbox-group label a {
+          color: #007bff;
+          text-decoration: none;
+          font-weight: bold;
+      }
+
+      .create-account-button {
+          width: 100%;
+          padding: 15px 0;
+          background-color: #007bff; /* Bright blue button */
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          font-size: 1.2em;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background-color 0.3s ease, box-shadow 0.3s ease;
+          box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+      }
+
+      .create-account-button:hover {
+          background-color: #0056b3;
+          box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+      }
