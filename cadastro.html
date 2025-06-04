@@ -1,19 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Cadastro - Banco</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> Cadastre-se - MONEDAS</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Crie sua conta</h1>
-    <form action="/cadastro" method="POST">
-      <input type="text" name="username" placeholder="Nome de usuário" required>
-      <input type="password" name="password" placeholder="Senha" required>
-      <button type="submit">Cadastrar</button>
-    </form>
-    <p>Já tem conta? <a href="index.html">Fazer login</a></p>
-  </div>
+    <header class="header">
+        <div class="header-left">
+            <a href="#">Abra sua conta</a>
+            <a href="#">Ajuda</a>
+            <a href="#" class="search-icon">🔍 Busca</a>
+        </div>
+        <div class="header-right">
+            <div class="coin-icon">
+                <span>🤔</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="left-section">
+            <h2>Chegou a hora de <br> abrir sua conta!</h2>
+            <div class="card-machine-container">
+                <img src="https://via.placeholder.com/400x300/a8dcfc/004d66?text=Card+Machine" alt="Máquina de Cartão" class="card-machine-image">
+                <img src="https://via.placeholder.com/200x120/007bff/ffffff?text=Card" alt="Cartão" class="card-image">
+            </div>
+        </section>
+
+        <section class="right-section">
+            <form>
+                <div class="input-group">
+                    <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF">
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="Digite seu E-MAIL">
+                </div>
+                <div class="input-group">
+                    <input type="tel" id="telefone" name="telefone" placeholder="Digite seu Telefone">
+                </div>
+                <div class="input-group">
+                    <input type="text" id="endereco" name="endereco" placeholder="Digite seu Endereço">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="senha" name="senha" placeholder="Crie Sua Senha">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms">
+                    <label for="terms">Li e aceito todos os termos de <a href="#">Política e Privacidade</a></label>
+                </div>
+                <button type="submit" class="create-account-button">Criar Minha Conta</button>
+            </form>
+        </section>
+    </main>
 </body>
 </html>
