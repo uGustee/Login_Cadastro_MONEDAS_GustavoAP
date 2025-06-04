@@ -1,19 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>Login - Banco</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> Futuro Financeiro</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Entrar na conta</h1>
-    <form action="/login" method="POST">
-      <input type="text" name="username" placeholder="Nome de usuário" required>
-      <input type="password" name="password" placeholder="Senha" required>
-      <button type="submit">Entrar</button>
-    </form>
-    <p>Não tem conta? <a href="cadastro.html">Cadastrar</a></p>
-  </div>
+    <header class="header">
+        <div class="header-left">
+            <a href="#">Abra sua conta</a>
+            <a href="#">Ajuda</a>
+            <a href="#" class="search-icon">🔍 Busca</a>
+        </div>
+        <div class="header-right">
+            <div class="coin-icon">
+                <span>🤔</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <img src="https://via.placeholder.com/1920x1080/0d1a2a/ffffff?text=Background+Image" alt="Background" class="background-image">
+
+        <section class="left-section">
+            <p>Consultoria personalizada para alcançar seus objetivos com inteligência e simplicidade</p>
+            <h2>Transforme Seu Futuro Financeiro.</h2>
+            <div class="app-preview">
+                <img src="https://via.placeholder.com/200x400/0a1f2b/ffffff?text=Phone+App" alt="Phone App Preview">
+                <span>Gerencie suas finanças na palma da sua mão.</span>
+            </div>
+        </section>
+
+        <section class="right-section">
+            <h3>ACESSE SUA CONTA</h3>
+            <form>
+                <div class="input-group">
+                    <input type="text" id="cpf" name="cpf" placeholder="CPF">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="senha" name="senha" placeholder="SENHA">
+                </div>
+                <button type="submit" class="login-button">CONTINUAR</button>
+            </form>
+        </section>
+    </main>
 </body>
 </html>
