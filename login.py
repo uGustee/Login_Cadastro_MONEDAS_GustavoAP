@@ -1,9 +1,4 @@
-# --- Funções do Sistema de Login ---
-
 def fazer_login(usuarios_pre_cadastrados):
-    """
-    Função para realizar o processo de login.
-    """
     print("\n--- FAZER LOGIN ---")
     tentativas = 3
     while tentativas > 0:
@@ -26,9 +21,6 @@ def fazer_login(usuarios_pre_cadastrados):
             return False # Retorna False se o login falhar
 
 def registrar_usuario(usuarios_pre_cadastrados):
-    """
-    Função para registrar um novo usuário (temporariamente, pois não salva em arquivo).
-    """
     print("\n--- REGISTRAR NOVO USUÁRIO ---")
     while True:
         novo_usuario = input("Digite o nome de usuário desejado (ou 'sair' para cancelar): ").strip()
@@ -64,47 +56,32 @@ def registrar_usuario(usuarios_pre_cadastrados):
         else:
             print("As senhas não coincidem. Tente novamente.")
 
-# --- Programa Principal ---
-
 def main():
-    """
-    Função principal que executa o sistema de login.
-    """
-    # Usuários pré-cadastrados (armazenados diretamente no código)
-    # Estes usuários estarão sempre disponíveis ao iniciar o programa.
     usuarios_cadastrados = {
         "admin": "12345",
         "usuario1": "senha123",
         "teste": "abcde"
     }
-
-    # Você pode adicionar mais usuários aqui, se quiser
-    # usuarios_cadastrados["novo_usuario_fixo"] = "senha_fixa"
-
     while True:
         print("\n--- MENU DE LOGIN ---")
         print("1. Fazer Login")
         print("2. Registrar Novo Usuário")
         print("3. Sair")
-
+        
         opcao = input("Escolha uma opção: ").strip()
-
+        
         if opcao == '1':
             if fazer_login(usuarios_cadastrados):
                 print("Você está na área restrita!")
-                # Você pode adicionar mais funcionalidades aqui, por exemplo, um sub-menu
-                # input("\nPressione Enter para continuar no menu principal...") # Para pausar a execução
-                pass # Continua no menu principal
+                pass 
         elif opcao == '2':
-            # A função registrar_usuario modifica o dicionário em memória
+
             registrar_usuario(usuarios_cadastrados)
-            # Não há chamada para salvar_usuarios aqui, pois não há arquivo.
+
         elif opcao == '3':
             print("Saindo do sistema. Até mais!")
             break
         else:
             print("Opção inválida. Por favor, escolha 1, 2 ou 3.")
-
-# Garante que a função main() seja executada apenas quando o script for rodado diretamente
 if __name__ == "__main__":
     main()
