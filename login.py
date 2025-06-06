@@ -1,87 +1,82 @@
-def fazer_login(usuarios_pre_cadastrados):
-    print("\n--- FAZER LOGIN ---")
+def fazer_login(contas):
+    print("\n🔐 LOGIN BANCÁRIO")
     tentativas = 3
     while tentativas > 0:
-        nome_usuario = input("Digite seu nome de usuário: ").strip()
-        senha_digitada = input("Digite sua senha: ").strip()
+        usuario = input("👤 Usuário: ").strip()
+        senha = input("🔑 Senha: ").strip()
 
-        if nome_usuario in usuarios_pre_cadastrados:
-            if usuarios_pre_cadastrados[nome_usuario] == senha_digitada:
-                print(f"\nLogin bem-sucedido! Bem-vindo(a), {nome_usuario}!")
-                return True  # Retorna True para indicar login de sucesso
+        if usuario in contas:
+            if contas[usuario]['senha'] == senha:
+                print(f"\n✅ Bem-vindo(a), {usuario}!")
+                print(f"💰 Saldo: R${contas[usuario]['saldo']:.2f}")
+                return True
             else:
                 tentativas -= 1
-                print(f"Senha incorreta. Você tem mais {tentativas} tentativas.")
+                print(f"❌ Senha incorreta. Tentativas restantes: {tentativas}")
         else:
             tentativas -= 1
-            print(f"Usuário '{nome_usuario}' não encontrado. Você tem mais {tentativas} tentativas.")
-
+            print(f"❌ Usuário não encontrado. Tentativas restantes: {tentativas}")
+        
         if tentativas == 0:
-            print("Número máximo de tentativas atingido. Acesso bloqueado.")
-            return False # Retorna False se o login falhar
-
-def registrar_usuario(usuarios_pre_cadastrados):
-    print("\n--- REGISTRAR NOVO USUÁRIO ---")
-    while True:
-        novo_usuario = input("Digite o nome de usuário desejado (ou 'sair' para cancelar): ").strip()
-        if novo_usuario.lower() == 'sair':
-            print("Registro cancelado.")
+            print("🚫 Acesso bloqueado.")
             return False
-        if not novo_usuario:
-            print("Nome de usuário não pode ser vazio.")
+
+def registrar_conta(contas):
+    print("\n📝 ABRIR CONTA")
+    while True:
+        novo_usuario = input("👤 Novo usuário (ou 'sair' pra cancelar): ").strip()
+        if novo_usuario.lower() == 'sair':
+            print("🚫 Cadastro cancelado.")
+            return False
+        if not novo_usuario or ' ' in novo_usuario:
+            print("⚠️ Nome inválido. Evite espaços ou campos vazios.")
             continue
-        if ' ' in novo_usuario: # Remove a verificação de vírgula já que não é salva em arquivo
-            print("Nome de usuário não pode conter espaços.")
+        if novo_usuario in contas:
+            print("⚠️ Usuário já existe.")
             continue
-        if novo_usuario in usuarios_pre_cadastrados:
-            print(f"O usuário '{novo_usuario}' já existe. Escolha outro nome.")
-        else:
-            break # Nome de usuário válido
+        break
 
     while True:
-        nova_senha = input("Digite a senha desejada: ").strip()
-        if not nova_senha:
-            print("Senha não pode ser vazia.")
+        senha = input("🔑 Crie uma senha: ").strip()
+        if not senha or ' ' in senha:
+            print("⚠️ Senha inválida. Evite espaços ou campos vazios.")
             continue
-        if ' ' in nova_senha: # Remove a verificação de vírgula
-            print("Senha não pode conter espaços.")
+        confirmar = input("🔄 Confirme a senha: ").strip()
+        if senha != confirmar:
+            print("❌ Senhas diferentes. Tente de novo.")
             continue
-        confirmar_senha = input("Confirme a senha: ").strip()
+        break
 
-        if nova_senha == confirmar_senha:
-            usuarios_pre_cadastrados[novo_usuario] = nova_senha # Adiciona ao dicionário em memória
-            print(f"Usuário '{novo_usuario}' registrado com sucesso!")
-            print("Atenção: Este registro é temporário e não será salvo após o programa ser encerrado.")
-            return True # Retorna True para indicar registro de sucesso
-        else:
-            print("As senhas não coincidem. Tente novamente.")
+    contas[novo_usuario] = {
+        'senha': senha,
+        'saldo': 0.0
+    }
+    print(f"✅ Conta '{novo_usuario}' criada com sucesso!")
+    return True
 
 def main():
-    usuarios_cadastrados = {
-        "admin": "12345",
-        "usuario1": "senha123",
-        "teste": "abcde"
+    contas = {
+        "admin": {"senha": "12345", "saldo": 10000.00},
+        "cliente1": {"senha": "senha123", "saldo": 250.75}
     }
+
     while True:
-        print("\n--- MENU DE LOGIN ---")
-        print("1. Fazer Login")
-        print("2. Registrar Novo Usuário")
-        print("3. Sair")
-        
-        opcao = input("Escolha uma opção: ").strip()
-        
-        if opcao == '1':
-            if fazer_login(usuarios_cadastrados):
-                print("Você está na área restrita!")
-                pass 
-        elif opcao == '2':
+        print("\n🏦 BANCO MONEDAS - MENU")
+        print("1️⃣  Entrar na conta")
+        print("2️⃣  Criar nova conta")
+        print("3️⃣  Sair")
 
-            registrar_usuario(usuarios_cadastrados)
+        escolha = input("👉 Escolha uma opção: ").strip()
 
-        elif opcao == '3':
-            print("Saindo do sistema. Até mais!")
+        if escolha == '1':
+            fazer_login(contas)
+        elif escolha == '2':
+            registrar_conta(contas)
+        elif escolha == '3':
+            print("👋 Valeu por usar o Banco Monedas!")
             break
         else:
-            print("Opção inválida. Por favor, escolha 1, 2 ou 3.")
+            print("❌ Opção inválida. Digite 1, 2 ou 3.")
+
 if __name__ == "__main__":
     main()
